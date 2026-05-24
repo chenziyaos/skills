@@ -1,0 +1,16 @@
+governance_review:
+  asset_id: risk-review-skill
+  run_id: run-2026-05-21-I1
+  ts: 2026-05-21T19:35:00+08:00
+  primary_decision: extend-skill
+  signal: freeze-candidate
+  evidence_maturity: early-signal
+  inventory_evidence_present: false
+  evidence_basis:
+    - impact-reasoning
+    - attribution-uncertainty
+  impact_posture: keep-but-freeze
+  notes: |
+    Controlled drill based on impact test I1.
+    The asset still creates high value, but maintenance burden is rising.
+    The signal is advisory only and does not mean the asset is already frozen.

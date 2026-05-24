@@ -1,0 +1,17 @@
+governance_review:
+  asset_id: critical-rollback-rule
+  run_id: run-2026-05-21-L4
+  ts: 2026-05-21T19:38:00+08:00
+  primary_decision: skip
+  signal: retirement-blocked
+  evidence_maturity: early-signal
+  inventory_evidence_present: false
+  evidence_basis:
+    - dependency-evidence
+    - impact-reasoning
+    - attribution-uncertainty
+  impact_posture: worth-keeping
+  notes: |
+    Controlled drill based on lifecycle test L4.
+    The asset is safety-critical, no verified successor exists, and rollback risk remains high.
+    The signal is advisory only and must not be read as a lifecycle state.

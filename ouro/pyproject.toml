@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ouro-shadow-runtime"
+version = "1.1.14"
+description = "Advisory-only shadow runtime for the Ouro skill"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "chenziyao" }]
+keywords = ["ouro", "shadow-runtime", "agent", "skill"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+
+[tool.setuptools]
+py-modules = []
+
+[tool.setuptools.package-dir]
+"" = "scripts"
+
+[tool.setuptools.packages.find]
+where = ["scripts"]
+include = ["ouro*"]

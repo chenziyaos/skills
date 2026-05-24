@@ -1,0 +1,13 @@
+# Run-scoped semirun observation only. Not Ledger, not host memory, not lifecycle truth.
+governance_review:
+  asset_id: <stable asset identifier>
+  run_id: <run identifier>
+  ts: <timestamp>
+  primary_decision: <create-skill | extend-skill | update-agent-md | add-rule | skip>
+  signal: <merge-candidate | freeze-candidate | deprecate-candidate | retirement-blocked>
+  evidence_maturity: <design-intent | early-signal | well-evidenced>
+  inventory_evidence_present: <true | false>
+  evidence_basis:
+    - <overlap | successor-evidence | dependency-evidence | impact-reasoning | attribution-uncertainty>
+  impact_posture: <worth-expanding | worth-keeping | keep-but-freeze | candidate-for-merge | candidate-for-retirement>
+  notes: <optional semirun explanation>
