@@ -74,6 +74,10 @@ python3 ouro/scripts/run_ouro.py --help
 python3 -m unittest discover -s ouro/scripts -p 'test_ouro.py'
 ```
 
+## 贡献约定
+
+提交边界、目录职责和最小验证约定见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+
 ## 维护原则
 
 - skill 仓库默认按 skill-tier / quasi-library tier / PyPI-library tier 分级治理
