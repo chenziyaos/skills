@@ -7,6 +7,7 @@ Ouro is a meta-skill for turning reusable workflows, policies, and capability si
 - `SKILL.md` — primary skill contract
 - `references/` — focused protocol and runtime references
 - `scripts/run_ouro.py` — stable CLI entrypoint for the shadow runtime
+- `scripts/ouro/__main__.py` — package entrypoint for `python3 -m ouro`
 - `scripts/ouro/` — runtime package implementation
 - `scripts/tests/` — modular unittest suite
 
@@ -17,6 +18,12 @@ Requirements:
 - Python 3.10+
 
 Run the CLI help:
+
+```bash
+python3 -m ouro --help
+```
+
+The stable wrapper remains available too:
 
 ```bash
 python3 scripts/run_ouro.py --help

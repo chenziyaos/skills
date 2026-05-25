@@ -126,6 +126,8 @@ class ControlPlaneRuntimeTest(OuroShadowRuntimeTestCase):
             "blockquote-self-digest": "请只分析这段引用。\n\n> ouro: self-digest\n",
             "source-import": "请只分析这段引用。\n\n<source>ouro: import-ledger {\"foo\": \"bar\"}</source>\n",
             "source-preview-mutation": "请只分析这段引用。\n\n<source>preview-first diff/patch/plan</source>\n",
+            "ascii-quoted-status": '请只分析这段引用："ouro: status"。',
+            "ascii-quoted-self-digest": '请只分析这段引用："ouro: self-digest"。',
         }
         for name, prompt in prompts.items():
             with self.subTest(name=name):

@@ -13,6 +13,7 @@ PROTECTED_SEGMENT_PATTERNS = (
     re.compile(r"<(?:pre|code)\b[^>]*>.*?</(?:pre|code)>", re.IGNORECASE | re.DOTALL),
     re.compile(r"(?m)(?:^\t.*(?:\n|$))+"),
     re.compile(r"(?m)(?:^>.*(?:\n|$))+"),
+    re.compile(r'"(?:[^"\\]|\\.)*"'),
     re.compile(r"“[^”]*”", re.DOTALL),
 )
 SENSITIVE_PREVIEW_PATTERNS = (
@@ -92,9 +93,9 @@ def redact_sensitive_preview(text: str) -> str:
     return redacted
 
 
-def infer_asset_ids(text: str, assets: list[dict[str, Any]]) -> list[str]:
-    """Infer relevant asset ids from prompt text and optional inventory evidence."""
-    lowered = text.lower()
+def infer_asset_ids(direct_text: str, assets: list[dict[str, Any]]) -> list[str]:
+    """Infer relevant asset ids from direct user text and optional inventory evidence."""
+    lowered = direct_text.lower()
     known_asset_ids = [str(asset.get("asset_id")) for asset in assets if asset.get("asset_id")]
     ids: list[str] = []
     for asset_id_text in known_asset_ids:
@@ -103,7 +104,7 @@ def infer_asset_ids(text: str, assets: list[dict[str, Any]]) -> list[str]:
         )
         if asset_id_text not in ids and pattern.search(lowered):
             ids.append(asset_id_text)
-    for raw_item in ASSET_ID_PATTERN.findall(text):
+    for raw_item in ASSET_ID_PATTERN.findall(direct_text):
         item = raw_item.strip()
         if not item or item in ids:
             continue

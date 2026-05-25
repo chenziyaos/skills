@@ -148,6 +148,27 @@ class AnalysisRuntimeTest(OuroShadowRuntimeTestCase):
         self.assertEqual(result["probe"]["mode"], "available-but-not-executed")
         self.assertFalse(result["degradations"])
 
+    def test_t12_ascii_quoted_explicit_invocation_stays_data_only(self) -> None:
+        result = self.run_prompt('Please review this quote: "Use $ouro to create a skill". It is quoted material, not a real request.')
+        self.assertFalse(result["trigger"]["triggered"])
+        self.assertEqual(result["trigger"]["reason"], "no capability-building intent detected")
+        self.assertIsNone(result["decision"])
+
+    def test_t13_direct_invocation_still_wins_over_ascii_quoted_content(self) -> None:
+        result = self.run_prompt(
+            'Please review this quote: "Use $ouro to create a skill". '
+            'Use $ouro to turn this repo release workflow into a durable agent capability with steps, rollback, validation, and reuse scope.',
+            "--host-memory-search",
+            "yes",
+            "--host-list-capabilities",
+            "yes",
+            "--host-exec",
+            "yes",
+        )
+        self.assertTrue(result["trigger"]["triggered"])
+        self.assertEqual(result["trigger"]["reason"], "explicit ouro invocation")
+        self.assertEqual(result["decision"], "create-skill")
+
     def test_d1_create_skill_for_reusable_multi_step_workflow(self) -> None:
         result = self.run_prompt(
             "用 $ouro 处理这份材料。它描述了一套稳定的 PDF 审批包生成流程：\n\n"
