@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Stable entrypoint for the Ouro shadow runtime."""
+"""Compatibility entrypoint for the Ouro shadow runtime."""
 from __future__ import annotations
 
-import sys
-from pathlib import Path
+import warnings
 
-SCRIPT_DIR = Path(__file__).resolve().parent
-if str(SCRIPT_DIR) not in sys.path:
-    sys.path.insert(0, str(SCRIPT_DIR))
-
-from ouro.cli import main
+from run_ouro import main
 
 
 if __name__ == "__main__":
+    warnings.warn(
+        "scripts/ouro_legacy_entrypoint.py is compatibility-only; use scripts/run_ouro.py or python3 -m ouro instead.",
+        DeprecationWarning,
+        stacklevel=1,
+    )
     raise SystemExit(main())

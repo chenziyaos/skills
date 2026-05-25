@@ -29,6 +29,8 @@ The stable wrapper remains available too:
 python3 scripts/run_ouro.py --help
 ```
 
+`scripts/run_ouro.py` is the canonical wrapper. `scripts/ouro_legacy_entrypoint.py` is kept only for compatibility.
+
 Run the main test suite:
 
 ```bash
