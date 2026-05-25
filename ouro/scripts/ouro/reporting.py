@@ -7,17 +7,21 @@ from typing import Any
 from .models import EvidenceEnvelope, PriorEvidenceSummary
 from .text_utils import redact_sensitive_preview
 
+RESULT_SCHEMA_VERSION = 1
+SHADOW_RESULT_MODE = "shadow"
+SHADOW_BOUNDARY = {
+    "advisoryOnly": True,
+    "writesLedger": False,
+    "executesSelfDigest": False,
+    "mutatesSkillSurface": False,
+    "mutatesAgentConfig": False,
+    "mutatesRules": False,
+}
+
 
 def shadow_boundary() -> dict[str, Any]:
     """Return the immutable shadow-runtime safety boundary."""
-    return {
-        "advisoryOnly": True,
-        "writesLedger": False,
-        "executesSelfDigest": False,
-        "mutatesSkillSurface": False,
-        "mutatesAgentConfig": False,
-        "mutatesRules": False,
-    }
+    return dict(SHADOW_BOUNDARY)
 
 def next_action(decision: str, governance_review: dict[str, Any]) -> str:
     """Return the next-action summary for the result."""
@@ -62,8 +66,8 @@ def build_result_payload(
 ) -> dict[str, Any]:
     """Build the shared result payload for triggered and non-triggered runs."""
     return {
-        "schemaVersion": 1,
-        "mode": "shadow",
+        "schemaVersion": RESULT_SCHEMA_VERSION,
+        "mode": SHADOW_RESULT_MODE,
         "runId": run_id,
         "ts": timestamp,
         "input": {

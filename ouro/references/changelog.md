@@ -1,6 +1,7 @@
 # Ouro — Digestion History & Changelog
 
 > This file stores historical ouro-digested annotations and expanded Skill Log entries that were previously inline in SKILL.md. Moved here in v1.1.0 to reduce main body weight.
+> Use `../CHANGELOG.md` for the current release-facing summary; keep this file for extended history and digestion archive.
 
 ## Digestion Annotations (moved from SKILL.md header)
 

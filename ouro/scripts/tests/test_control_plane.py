@@ -1,41 +1,22 @@
 from __future__ import annotations
 
-try:
-    from tests.support import (
-        OuroShadowRuntimeTestCase,
-        WRAPPER,
-        datetime,
-        host_bridge,
-        json,
-        make_analysis,
-        patch,
-        Path,
-        runtime,
-        subprocess,
-        sys,
-        tempfile,
-        text_utils,
-        timedelta,
-        timezone,
-    )
-except ImportError:
-    from support import (
-        OuroShadowRuntimeTestCase,
-        WRAPPER,
-        datetime,
-        host_bridge,
-        json,
-        make_analysis,
-        patch,
-        Path,
-        runtime,
-        subprocess,
-        sys,
-        tempfile,
-        text_utils,
-        timedelta,
-        timezone,
-    )
+from support import (
+    OuroShadowRuntimeTestCase,
+    WRAPPER,
+    datetime,
+    host_bridge,
+    json,
+    make_analysis,
+    patch,
+    Path,
+    runtime,
+    subprocess,
+    sys,
+    tempfile,
+    text_utils,
+    timedelta,
+    timezone,
+)
 
 class ControlPlaneRuntimeTest(OuroShadowRuntimeTestCase):
     def test_control_plane_self_digest_stays_preview_only(self) -> None:

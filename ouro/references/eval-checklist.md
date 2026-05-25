@@ -23,6 +23,15 @@ Before running the suite, record these facts:
 - Whether sandbox / `host.exec` exists
 - Approximate Ledger size bucket: `0`, `1-20`, `21+`
 
+## Minimal validation path
+
+Before the full manual regression, align on the same minimum path used elsewhere:
+
+1. `python3 -m ouro --help`
+2. `python3 scripts/run_ouro.py --help`
+3. One smoke prompt with `--output-dir`, expecting `mode=shadow`, `decision=add-rule`, and a written `artifacts.runResultJson`
+4. Then run the manual checklist below for broader regression coverage
+
 ## Recommended run order
 
 Run from low-cost trigger checks to higher-cost decision checks:

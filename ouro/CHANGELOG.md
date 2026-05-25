@@ -1,5 +1,7 @@
 # Changelog
 
+This file tracks the current release-facing summary. Historical digestion notes and older expanded logs live in `references/changelog.md`.
+
 ## v1.1.14
 
 - make control-plane command detection direct-text only so protected quoted, fenced, and source-tagged content stays data-only

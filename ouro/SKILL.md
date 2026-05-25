@@ -248,6 +248,8 @@ Confidence 校准表：H（同类证据充分且无降级；在 repo-local shado
 
 repo-local Python runtime 不输出 CogniVore Report，而是输出结构化 `run_result.json`，用于 semirun / contract validation。
 
+最小验证路径统一为：先跑 `python3 -m ouro --help`，再跑 `python3 scripts/run_ouro.py --help`，再跑一条带 `--output-dir` 的 smoke prompt；需要更完整验证时，再看 `references/runtime-checklist.md` 与 `references/eval-checklist.md`。
+
 最小约束如下：
 
 - `mode` 固定为 `shadow`
@@ -450,7 +452,7 @@ host_adapter:
 3. 最后复制 `references/eval-results-template.md`，保存为带日期的结果文件（如 `eval-results-2026-05-21.md`），逐 case 记录结果。
 4. 若命中 fast failure（误触发 URL、注入 case 未 SKIP、单行规则变 create-skill 等）→ 立即 block release。
 5. 做真实宿主联调时，优先使用 `references/runtime-checklist.md` + `references/eval-results-runtime-hostA-2026-05-21.md` 这组轻量资产。
-6. repo-local shadow runtime 最小验证顺序：`python3 scripts/run_ouro.py --help` → `python3 -m unittest discover -s scripts -p 'test_ouro.py'`。
+6. repo-local shadow runtime 最小验证顺序：`python3 -m ouro --help` → `python3 scripts/run_ouro.py --help` → 带 `--output-dir` 的 smoke prompt；需要更完整回归时再跑 `python3 -m unittest discover -s scripts -p 'test_ouro.py'`。
 
 ## 15. Skill Log
 

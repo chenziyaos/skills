@@ -9,6 +9,13 @@
 - Governance semantics: `governance-signal.md` → `capability-lifecycle.md` → `impact-model.md`
 - Upgrade planning: `protocol-upgrade-draft.md` → `governance-shadow-rollout.md` → `shadow-write-protocol.md`
 
+## Read by task
+- Run the runtime quickly: `../README.md` → `../README.md` Quick start
+- Validate the runtime end to end: `../README.md` Minimal self-check → `runtime-checklist.md` → `eval-checklist.md`
+- Inspect the shadow JSON schema: `result-schema.md`
+- Inspect host integration boundaries: `host-adapter.md`
+- Inspect governance semantics: `governance-signal.md` → `capability-lifecycle.md` → `impact-model.md`
+
 ## Shadow runtime references
 - `shadow-runtime-contract.md` — stable contract for the current advisory-only runtime surface
 - `result-schema.md` — flattened field index for `run_result.json`

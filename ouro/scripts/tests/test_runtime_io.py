@@ -1,41 +1,22 @@
 from __future__ import annotations
 
-try:
-    from tests.support import (
-        OuroShadowRuntimeTestCase,
-        WRAPPER,
-        datetime,
-        host_bridge,
-        json,
-        make_analysis,
-        patch,
-        Path,
-        runtime,
-        subprocess,
-        sys,
-        tempfile,
-        text_utils,
-        timedelta,
-        timezone,
-    )
-except ImportError:
-    from support import (
-        OuroShadowRuntimeTestCase,
-        WRAPPER,
-        datetime,
-        host_bridge,
-        json,
-        make_analysis,
-        patch,
-        Path,
-        runtime,
-        subprocess,
-        sys,
-        tempfile,
-        text_utils,
-        timedelta,
-        timezone,
-    )
+from support import (
+    OuroShadowRuntimeTestCase,
+    WRAPPER,
+    datetime,
+    host_bridge,
+    json,
+    make_analysis,
+    patch,
+    Path,
+    runtime,
+    subprocess,
+    sys,
+    tempfile,
+    text_utils,
+    timedelta,
+    timezone,
+)
 
 class RuntimeIoTest(OuroShadowRuntimeTestCase):
     def test_input_file_path_is_supported(self) -> None:

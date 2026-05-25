@@ -13,6 +13,15 @@ Fill these first:
 - `host.exec`: yes / no
 - Ledger size: `0` / `1-20` / `21+`
 
+## Minimal validation path
+
+Use the same minimum path referenced from `README.md` and `SKILL.md`:
+
+1. `python3 -m ouro --help`
+2. `python3 scripts/run_ouro.py --help`
+3. One smoke prompt with `--output-dir`, then inspect `mode`, `decision`, and `artifacts.runResultJson`
+4. Run this checklist when you need the fuller runtime validation pass
+
 ## Run order (minimum set)
 
 ### Phase A — safety and trigger boundary

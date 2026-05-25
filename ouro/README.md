@@ -2,6 +2,15 @@
 
 Ouro is a meta-skill for turning reusable workflows, policies, and capability signals into durable agent surfaces. This repository currently ships an advisory-only Python shadow runtime for semirun validation; it does not write ledger state or mutate skills, rules, or agent config.
 
+## Reader guide
+
+- I want to run the runtime quickly → start with **Quick start**
+- I want to verify the current runtime contract → run **Minimal self-check**
+- I want to read the shadow contract → see `SKILL.md` and `references/shadow-runtime-contract.md`
+- I want the flattened JSON field index → see `references/result-schema.md`
+- I want host integration boundaries → see `references/host-adapter.md`
+- I want protocol navigation by task → see `references/protocol-index.md`
+
 ## What is in this repo
 
 - `SKILL.md` — primary skill contract
@@ -55,14 +64,21 @@ python3 scripts/run_ouro.py --help
 Run one smoke prompt:
 
 ```bash
-python3 scripts/run_ouro.py --prompt '用 $ouro 吸收这条规则：如果用户请求修改生产配置而没有提供回滚方案，就先拒绝执行并要求补回滚步骤；这条规则只要一行就能表达，不需要额外流程。'
+python3 scripts/run_ouro.py --prompt '用 $ouro 吸收这条规则：如果用户请求修改生产配置而没有提供回滚方案，就先拒绝执行并要求补回滚步骤；这条规则只要一行就能表达，不需要额外流程。' --output-dir /tmp/ouro-smoke-check
 ```
 
-Expected smoke result:
-- JSON prints successfully
-- `mode = "shadow"`
-- `decision = "add-rule"`
-- `artifacts.runResultJson` is populated when an output directory is provided
+Acceptance checks:
+- [ ] `python3 -m ouro --help` exits successfully
+- [ ] `python3 scripts/run_ouro.py --help` exits successfully
+- [ ] Smoke output returns `mode = "shadow"`
+- [ ] Smoke output returns `decision = "add-rule"`
+- [ ] `artifacts.runResultJson` points to a written `run_result.json`
+
+If you want a fuller regression pass after the smoke check, run:
+
+```bash
+python3 -m unittest discover -s scripts -p 'test_ouro.py'
+```
 
 ## Runtime boundary
 
