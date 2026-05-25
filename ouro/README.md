@@ -43,6 +43,27 @@ Run the modular suites directly:
 python3 -m unittest discover -s scripts/tests -p 'test_*.py'
 ```
 
+## Minimal self-check
+
+Verify the canonical entrypoints:
+
+```bash
+python3 -m ouro --help
+python3 scripts/run_ouro.py --help
+```
+
+Run one smoke prompt:
+
+```bash
+python3 scripts/run_ouro.py --prompt '用 $ouro 吸收这条规则：如果用户请求修改生产配置而没有提供回滚方案，就先拒绝执行并要求补回滚步骤；这条规则只要一行就能表达，不需要额外流程。'
+```
+
+Expected smoke result:
+- JSON prints successfully
+- `mode = "shadow"`
+- `decision = "add-rule"`
+- `artifacts.runResultJson` is populated when an output directory is provided
+
 ## Runtime boundary
 
 The repo-local runtime is intentionally shadow-only:
