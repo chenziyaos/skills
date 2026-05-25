@@ -3,11 +3,16 @@
 > Navigation index for protocol-evolution references.
 
 ## Reader paths
-- Shadow runtime contract: `../SKILL.md §7.2` → `shadow-runtime-contract.md` → `runtime-checklist.md` → `golden-tests.md` → `eval-checklist.md` → `eval-results-template.md`
-- Shadow runtime explainability / retention: `../SKILL.md §7.2` → `shadow-runtime-contract.md` → `runtime-checklist.md` → `host-adapter.md`
+- Shadow runtime contract: `../SKILL.md §7.2` → `shadow-runtime-contract.md` → `result-schema.md` → `runtime-checklist.md` → `golden-tests.md` → `eval-checklist.md` → `eval-results-template.md`
+- Shadow runtime explainability / retention: `../SKILL.md §7.2` → `shadow-runtime-contract.md` → `result-schema.md` → `runtime-checklist.md` → `host-adapter.md`
 - Host adapter and capability schema: `../SKILL.md §10` → `host-adapter.md`
 - Governance semantics: `governance-signal.md` → `capability-lifecycle.md` → `impact-model.md`
 - Upgrade planning: `protocol-upgrade-draft.md` → `governance-shadow-rollout.md` → `shadow-write-protocol.md`
+
+## Shadow runtime references
+- `shadow-runtime-contract.md` — stable contract for the current advisory-only runtime surface
+- `result-schema.md` — flattened field index for `run_result.json`
+- `host-adapter.md` — read-only bridge snapshot and capability reference
 
 ## Governance semantics
 - `governance-signal.md` — defines governance signals as a secondary advisory layer
