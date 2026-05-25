@@ -102,8 +102,8 @@ Suggested labels:
 How much runtime evidence exists behind the judgment.
 
 Suggested labels:
-- `design-intent`
-- `early-signal`
+- `prompt-only`
+- `supported-signal`
 - `well-evidenced`
 
 ## Decision heuristics

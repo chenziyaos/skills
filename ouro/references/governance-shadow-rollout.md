@@ -171,7 +171,7 @@ Not recommended first targets:
 ```yaml
 governance_review:
   signal: merge-candidate
-  evidence_maturity: early-signal
+  evidence_maturity: supported-signal
   inventory_evidence_present: false
   evidence_basis:
     - overlap

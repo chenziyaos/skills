@@ -39,7 +39,7 @@ One of:
 - `null`
 
 ### Layer 3 — Evidence envelope (new supporting layer)
-- `evidence_maturity`: `design-intent | early-signal | well-evidenced`
+- `evidence_maturity`: `prompt-only | supported-signal | well-evidenced`
 - `inventory_evidence_present`: `true | false`
 - `evidence_basis`: overlap / successor-evidence / dependency-evidence / impact-reasoning / attribution-uncertainty
 
@@ -53,7 +53,7 @@ A future report-compatible extension could add:
 ```yaml
 Decision: <five-way primary decision>
 Governance Signal: <null | merge-candidate | freeze-candidate | deprecate-candidate | retirement-blocked>
-Evidence Maturity: <design-intent | early-signal | well-evidenced>
+Evidence Maturity: <prompt-only | supported-signal | well-evidenced>
 Inventory Evidence Present: <true | false>
 Evidence Basis: [<one or more short reasons>]
 ```
@@ -77,7 +77,7 @@ A future shadow shape might be:
 ```yaml
 governance_review:
   signal: merge-candidate
-  evidence_maturity: early-signal
+  evidence_maturity: supported-signal
   inventory_evidence_present: false
   evidence_basis:
     - overlap

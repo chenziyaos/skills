@@ -9,7 +9,7 @@
 ## Simulated interpretation
 - `primary_decision`: `extend-skill`
 - `governance_signal`: `freeze-candidate`
-- `evidence_maturity`: `early-signal`
+- `evidence_maturity`: `supported-signal`
 - `inventory_evidence_present`: `false`
 - `impact_posture`: `keep-but-freeze`
 

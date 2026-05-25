@@ -86,6 +86,8 @@ When `--explain-decision` is enabled:
 
 `priorEvidence` is always present.
 
+It is the shadow runtime's read-only advisory prior summary layer, not a substitute for the host-side Ledger contract.
+
 Minimum fields:
 - `mode`
 - `readOnly`

@@ -35,7 +35,7 @@ Allowed values:
 
 ### Evidence envelope
 Required whenever governance reasoning is surfaced:
-- `evidence_maturity`: `design-intent | early-signal | well-evidenced`
+- `evidence_maturity`: `prompt-only | supported-signal | well-evidenced`
 - `inventory_evidence_present`: `true | false`
 - `evidence_basis`: one or more of
   - `overlap`
@@ -58,7 +58,7 @@ Required whenever governance reasoning is surfaced:
 ```yaml
 Decision: <five-way primary decision>
 Governance Signal: <null | merge-candidate | freeze-candidate | deprecate-candidate | retirement-blocked>
-Evidence Maturity: <design-intent | early-signal | well-evidenced>
+Evidence Maturity: <prompt-only | supported-signal | well-evidenced>
 Inventory Evidence Present: <true | false>
 Evidence Basis: [<one or more short reasons>]
 ```

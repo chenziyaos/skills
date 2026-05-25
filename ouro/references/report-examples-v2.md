@@ -11,7 +11,7 @@
 **Core Value**: adds durable review quality, but maintenance burden is rising
 **Decision**: extend-skill
 **Governance Signal**: freeze-candidate
-**Evidence Maturity**: early-signal
+**Evidence Maturity**: supported-signal
 **Inventory Evidence Present**: false
 **Evidence Basis**: overlap, impact-reasoning
 **Confidence**: M
@@ -34,7 +34,7 @@ Reason: the capability still has clear benefit, but every host/runtime change no
 **Core Value**: protects high-risk operations by requiring rollback planning
 **Decision**: skip
 **Governance Signal**: retirement-blocked
-**Evidence Maturity**: early-signal
+**Evidence Maturity**: supported-signal
 **Inventory Evidence Present**: false
 **Evidence Basis**: successor-evidence, dependency-evidence, impact-reasoning
 **Confidence**: L
@@ -58,7 +58,7 @@ Reason: removal is under-evidenced. No clear successor exists and rollback/safet
 **Core Value**: standardizes high-risk response ordering
 **Decision**: update-agent-md
 **Governance Signal**: merge-candidate
-**Evidence Maturity**: early-signal
+**Evidence Maturity**: supported-signal
 **Inventory Evidence Present**: true
 **Evidence Basis**: overlap, successor-evidence, impact-reasoning
 **Confidence**: M

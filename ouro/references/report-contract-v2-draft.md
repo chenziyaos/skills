@@ -33,7 +33,7 @@ Add a governance extension block that is:
 ```yaml
 Decision: <five-way primary decision>
 Governance Signal: <null | merge-candidate | freeze-candidate | deprecate-candidate | retirement-blocked>
-Evidence Maturity: <design-intent | early-signal | well-evidenced>
+Evidence Maturity: <prompt-only | supported-signal | well-evidenced>
 Inventory Evidence Present: <true | false>
 Evidence Basis: [<overlap | successor-evidence | dependency-evidence | impact-reasoning | attribution-uncertainty>]
 Confidence: <H | M | L>
@@ -55,7 +55,7 @@ Recommended placement:
 ```markdown
 ### Governance Review
 Signal: `merge-candidate`
-Evidence maturity: `early-signal`
+Evidence maturity: `supported-signal`
 Inventory evidence present: `false`
 Evidence basis: overlap, impact-reasoning
 Reason: overlap is high and duplicate semantics increase maintenance cost, but no explicit inventory graph is available, so the signal stays advisory.

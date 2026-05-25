@@ -19,7 +19,7 @@ governance_review:
   run_id: <run identifier>
   ts: <timestamp>
   signal: merge-candidate | freeze-candidate | deprecate-candidate | retirement-blocked
-  evidence_maturity: design-intent | early-signal | well-evidenced
+  evidence_maturity: prompt-only | supported-signal | well-evidenced
   inventory_evidence_present: true | false
   evidence_basis:
     - overlap

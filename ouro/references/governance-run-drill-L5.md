@@ -11,7 +11,7 @@
 
 - `primary_decision`: `update-agent-md`
 - `governance_signal`: `merge-candidate`
-- `evidence_maturity`: `early-signal`
+- `evidence_maturity`: `supported-signal`
 - `inventory_evidence_present`: `true`
 - `impact_posture`: `candidate-for-merge`
 

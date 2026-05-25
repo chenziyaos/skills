@@ -257,7 +257,7 @@ repo-local Python runtime 不输出 CogniVore Report，而是输出结构化 `ru
 - `host.readOnly` 固定为 `true`
 - `shadowBoundary.*` 必须持续声明 advisory-only、no-ledger-write、no-skill-mutation、no-agent-config-mutation、no-rule-mutation
 - `probe.mode` 只允许 `report-only` 或 `available-but-not-executed`，不得暗示 dry-run / adversarial 已实际执行
-- `priorEvidence` 必须是 read-only advisory prior summary，不得暗示 merge / deprecate / retire / execute 等 lifecycle fact 已发生
+- `priorEvidence` 必须是 read-only advisory prior summary layer，不是 host-side Ledger contract 的替代；不得暗示 merge / deprecate / retire / execute 等 lifecycle fact 已发生
 - `controlPlane` 仅表示 shadow-advisory 控制面预览；其命令检测只允许来自 direct user text，quoted / fenced / source-tagged 内容永远按 data 处理；不得暗示 self-digest、ledger import/export、status 或 preview-first mutation 已实际执行
 - `governanceReview.evidenceMaturity` 只允许 `prompt-only` / `supported-signal` / `well-evidenced` 三个值，用于表达 advisory evidence strength，不表示 durable governance state
 - companion `governance_review` YAML 仅表示 run-scoped advisory artifact，不表示 lifecycle fact 或 durable governance state

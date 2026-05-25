@@ -95,7 +95,7 @@ If governance signals later graduate from narrative-only output into structured 
 ```yaml
 governance_signal:
   kind: merge-candidate | freeze-candidate | deprecate-candidate | retirement-blocked
-  evidence_maturity: design-intent | early-signal | well-evidenced
+  evidence_maturity: prompt-only | supported-signal | well-evidenced
   inventory_evidence_present: true | false
   evidence_basis:
     - overlap

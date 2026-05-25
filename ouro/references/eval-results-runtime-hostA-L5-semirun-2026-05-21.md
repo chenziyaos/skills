@@ -37,13 +37,13 @@
 
 | Case | Lifecycle expected | Governance signal actual | Evidence maturity | Inventory evidence present? | Verdict | Notes |
 |---|---|---|---|---|---|---|
-| L5 | inventory-backed stronger governance signal | merge-candidate | early-signal | true | Pass | Signal remains advisory; inventory evidence raises confidence but does not imply merge execution. |
+| L5 | inventory-backed stronger governance signal | merge-candidate | supported-signal | true | Pass | Signal remains advisory; inventory evidence raises confidence but does not imply merge execution. |
 
 ## Impact case results
 
 | Case | Impact expected | Net value posture actual | Evidence maturity actual | Attribution confidence posture | Verdict | Notes |
 |---|---|---|---|---|---|---|
-| L5-semirun | merge economics surfaced | candidate-for-merge | early-signal | mid | Pass | Duplicate semantics + maintenance ambiguity justify governance pressure. |
+| L5-semirun | merge economics surfaced | candidate-for-merge | supported-signal | mid | Pass | Duplicate semantics + maintenance ambiguity justify governance pressure. |
 
 ## Artifact emission
 
@@ -70,7 +70,7 @@
 
 ### Impact reasoning issues
 
-- No overclaim. Inventory evidence is present, but evidence maturity remains only `early-signal`.
+- No overclaim. Inventory evidence is present, but evidence maturity remains only `supported-signal`.
 
 ## Final recommendation
 

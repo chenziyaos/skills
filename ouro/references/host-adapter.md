@@ -64,13 +64,21 @@ The full normative contract still lives in `SKILL.md §5`, `§7`, and `§10`. Th
 
 ### Current bridge behavior
 
-- Source: CLI flags (`--host-memory-search`, `--host-list-capabilities`, `--host-exec`, `--ledger-size-bucket`, `--show-scores`, `--explain-decision`, `--cache-ttl-hours`) or a structured `--host-bridge-file` JSON snapshot
+- Source inputs may come from:
+  - CLI flags (`--host-memory-search`, `--host-list-capabilities`, `--host-exec`, `--ledger-size-bucket`)
+  - a structured `--host-bridge-file` JSON snapshot
+  - an env-backed provider file via `OURO_HOST_PROVIDER_FILE`
+  - read-only env overrides such as `OURO_HOST_LEDGER_RECORDS`, `OURO_HOST_MODE`, `OURO_HOST_TENANT_ID`, and `OURO_HOST_TIME_NOW`
 - Output shape: one read-only snapshot consumed by decision routing, degradations, probe observability, and result reporting
 - Shadow runtime flags that affect reporting but not host capability state:
   - `--show-scores`
   - `--explain-decision`
   - `--cache-ttl-hours`
 - Current result payload includes:
+  - `host.memoryRead`
+  - `host.memorySearch`
+  - `host.ledgerRecordCount`
+  - `host.observedAssetCount`
   - `host.retrievalMode`
   - `host.discoveryMode`
   - `host.readOnly`
@@ -79,7 +87,7 @@ The full normative contract still lives in `SKILL.md §5`, `§7`, and `§10`. Th
   - `host.conceptualCapabilities`
   - optional `observability.*`
   - `outputPolicy.*`
-- Current limitation: bridge is advisory-only and does **not** yet call native host APIs such as `host.skill.list`, `host.memory.read/search`, or `host.time.now()`.
+- Current limitation: the bridge remains advisory-only and does **not** directly call native host APIs during a run. It normalizes read-only provider snapshots for surfaces such as `host.memory.read`, `host.memory.search`, and `host.time.now()`, but this is still not equivalent to a live host integration.
 - Capability reporting is intentionally split into:
   - concrete keys, e.g. `host.skill.list`, `host.memory.search`
   - conceptual groups, e.g. `host.skill`, `host.memory`

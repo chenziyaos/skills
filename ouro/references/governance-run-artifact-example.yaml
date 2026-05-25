@@ -4,7 +4,7 @@ governance_review:
   ts: 2026-05-21T18:40:00+08:00
   primary_decision: update-agent-md
   signal: merge-candidate
-  evidence_maturity: early-signal
+  evidence_maturity: supported-signal
   inventory_evidence_present: true
   evidence_basis:
     - overlap

@@ -9,7 +9,7 @@
 ## Simulated interpretation
 - `primary_decision`: `skip`
 - `governance_signal`: `retirement-blocked`
-- `evidence_maturity`: `early-signal`
+- `evidence_maturity`: `supported-signal`
 - `inventory_evidence_present`: `false`
 - `impact_posture`: `worth-keeping`
 
