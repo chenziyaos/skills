@@ -1,0 +1,4 @@
+# Local stateful artifacts — should not be committed.
+# Reports, snapshots, and the queue are derived from local transcripts + audit
+# output and are personal/timestamped; recompute them anytime with the scripts.
+.skill-refiner/
