@@ -140,6 +140,30 @@ For each case:
 - Decision class: `update-agent-md` **or** `add-rule`
 - Trigger check: Chinese explicit invocation phrasing should still count even without `$ouro`
 
+### T11 — Control command in scheduling/loop context should route to the command, not the 8-step workflow
+
+**Prompt**
+
+> /loop 5m ouro status
+
+**Expected**
+- Trigger: **no** (full 8-step digestion must NOT start)
+- Expected behavior: execute the §13 control command (`status`) itself on schedule; primary trigger word pointing at a control command under a scheduling/loop context routes to the control command, not capability digestion
+- Trigger check: `control-command-vs-workflow` routing — `ouro status` / `export-ledger` / `import-ledger` / `self-digest` under `/loop` or "每 N 分钟跑一次" must be classified as control-command, not explicit digestion invocation (§17)
+
+### T12 — Host-signaled budget/timeout during a digest run should fail-fast as F-Budget
+
+**Prompt**
+
+> 用 $ouro 内化这套稳定的多步发布流程（检查版本号 → 生成 changelog → 打 tag → 推包 → 校验 → 回滚）。
+> （模拟宿主在本轮返回 budget/timeout 错误信号）
+
+**Expected**
+- Trigger: **yes** (this is a genuine capability-building digest)
+- Failure class: `F-Budget` — host-returned budget/timeout signal (NOT model self-measurement), covering the whole round rather than only the probe phase
+- Expected behavior: fail-fast → immediate `skip` + partial Report; `confidence` forced to `L`
+- Honesty check: must NOT claim probes/dry-run executed; `probe.*` stays `skipped`/`not-executed`; report distinguishes host-signaled budget abort from input-quality skip
+
 ---
 
 ## B. Primary decision tests

@@ -1,0 +1,4 @@
+# Local stateful artifacts — should not be committed.
+# Candidates and watch list are derived from local transcripts and timestamped;
+# recompute them anytime with the scripts.
+.workflow-packager/
