@@ -1,124 +1,48 @@
 ---
 name: competitive-product-analysis
-description: "竞品/参考项目深度分析：只读探索目标仓库的架构与产品设计，与当前项目结构化对比，输出可吸收建议。当用户提到分析竞品、对比项目、看看别人怎么做的、参考XX的能力/优势、competitive analysis时触发。Do NOT use for: 吸收外部URL变成skill（用ouro）、review自己的代码质量（直接review或用multi-perspective-review）。"
-version: v0.1.0
-allowed-tools: Shell, Read, Grep, Write
+description: "竞品/参考项目深度分析：只读探索目标仓库或公开资料，与当前项目做结构化对比并输出可吸收建议。Use when the user asks to analyze competitors, compare projects, or learn from another implementation. Do NOT use to absorb external knowledge into a new skill (use ouro) or to review your own code quality only."
+version: v0.1.1
+allowed-tools: Bash, Read, Grep, Write
 ---
 
-# competitive-product-analysis — 竞品深度分析
+# competitive-product-analysis
 
-> 系统性拆解参考项目的架构和产品设计，与当前项目对比，输出"学什么 / 避什么 / 启发什么"。
+> 系统性拆解参考项目的架构和产品设计，与当前项目对比，输出“学什么 / 避什么 / 启发什么”。
 
 ## When to use
 
-- "分析下 XX 的实现原理和优势"
-- "对比下 XX 项目，看看我们差在哪"
-- "参考 XX 的能力，如何也实现"
-- "结合之前所有对照过的项目，综合看看"
+- “分析下 XX 的实现原理和优势”
+- “对比下 XX 项目，看看我们差在哪”
+- “参考 XX 的能力，如何也实现”
 - 设计阶段需要借鉴外部实现
+- 已经分析过多个对象，想做 cross-competitive summary
 
 ## When NOT to use
 
-- 想把外部 URL/文档**变成 skill** → `ouro`（CogniVore）
-- 想 review 自己代码 → 直接做 or `multi-perspective-review`
-- 目标不是仓库/代码而是一篇文档 → `ouro` 或直接阅读
+- 想把外部 URL / 文档 / 仓库吸收成新 capability → `ouro`
+- 只想 review 自己代码 → 直接 review 或 `multi-perspective-review`
+- 目标主要是单篇文档解读，而不是项目对比 → 直接阅读或 `ouro`
 
 ## 与 ouro 的边界
 
 | | competitive-product-analysis | ouro |
 |---|---|---|
-| 输入 | 本地/远程仓库代码 | URL / 文档 / 代码片段 |
-| 输出 | **对比报告**（决策支撑） | **skill / rule / config**（能力沉淀）|
-| 是否修改当前项目 | 不改，只分析 | 会创建/修改 artifact |
-
-串联用法：先用本 skill 做对比分析 → 确认值得吸收的部分 → 交给 ouro 正式内化。
+| 输入 | 本地/远程仓库、公开资料 | URL / 文档 / 代码片段 |
+| 输出 | 对比报告与行动建议 | skill / rule / config 沉淀 |
+| 是否修改当前项目 | 不改，只分析 | 可能生成或修改 artifact |
 
 ## 标准工作流
 
-### Phase 1 — 明确分析目标 ✅ 可全自动
+1. 明确对比目标：竞品、当前项目、分析维度
+2. 只读探索：目录结构、核心抽象、技术栈、工程实践
+3. 结构化对比：优势、劣势、中性差异、可吸收建议
+4. 如有多个竞品，再输出 cross-competitive summary
 
-确定：
-- **竞品路径**：本地仓库路径 or git URL
-- **当前项目**：对比的基准是什么
-- **关注维度**：架构？产品设计？技术栈？性能？UX？（默认全部）
-
-### Phase 2 — 竞品只读探索 ✅ 可全自动
-
-```
-对竞品做结构化探索（只读）：
-1. 项目结构（目录布局、模块划分）
-2. 核心抽象（关键接口、数据流）
-3. 技术栈选型（语言、框架、依赖）
-4. 产品设计（用户交互模式、命令/API 表面积）
-5. 工程实践（测试、CI、文档、发布流程）
-```
-
-**工具链**: `Read` 读核心文件，`Grep` 搜关键模式，`Shell` 跑 `wc -l` / `find` 统计规模。
-
-**约束**：不执行竞品代码、不安装依赖、不修改任何文件。
-
-### Phase 3 — 结构化对比 ✅ 可全自动
-
-输出固定格式：
-
-```markdown
-## Competitive Analysis: <竞品> vs <当前项目>
-
-### 基本信息
-| | <竞品> | <当前项目> |
-|---|---|---|
-| 语言 | ... | ... |
-| 规模 (LOC) | ... | ... |
-| 核心抽象 | ... | ... |
-
-### 竞品优势（值得学习）
-1. **<优势点>** — 具体实现 — 对我们的启发
-2. ...
-
-### 竞品劣势（我们做得更好 or 要避免）
-1. **<劣势点>** — 为什么是问题 — 我们如何避免
-2. ...
-
-### 设计差异（非优劣，是选择）
-1. **<差异点>** — 他们的选择 vs 我们的选择 — trade-off 分析
-2. ...
-
-### 可吸收建议（Action Items）
-| # | 吸收什么 | 改动范围 | 优先级 | 备注 |
-|---|----------|----------|--------|------|
-| 1 | ... | ... | P0/P1/P2 | ... |
-```
-
-### Phase 4 — 多竞品累积（可选）✅ 可全自动
-
-当分析了 2+ 个竞品后，可追加综合对比：
-
-```markdown
-## Cross-Competitive Summary
-
-### 共识（多个竞品都这么做）
-- ...（高置信度：行业最佳实践）
-
-### 分歧（竞品间选择不同）
-- ...（需要根据我们的场景判断）
-
-### 独特优势（只有我们有）
-- ...（差异化卖点，应保持）
-```
-
-## 决策速查
-
-```
-用户说 "分析/对比 XX" →
-  ├─ 给了本地路径 → Phase 1 直接开始
-  ├─ 给了 URL 但想对比 → Phase 1（clone or WebFetch）
-  ├─ 说 "结合之前所有对照的" → Phase 4 综合
-  └─ 说 "这个功能怎么吸收" → 建议转交 ouro
-```
+详细报告模板见 [references/report-template.md](references/report-template.md)。
 
 ## 关键约束
 
-1. **只读探索** — 不 clone、不 install、不执行竞品代码
-2. **不泄露竞品私密** — 如果竞品是内部仓库，报告不外传
-3. **结论必须有证据** — 每个"优势/劣势"都指向具体文件/代码段
-4. **Action Items 必须可执行** — 不是"考虑一下"，而是"在 X 模块做 Y 改动"
+- 不执行竞品代码、不安装依赖、不修改任何文件
+- 每个结论都要能落回具体证据
+- Action items 必须可执行，而不是泛泛建议
+- 若竞品是内部仓库，结果默认不外传
