@@ -42,7 +42,8 @@ WORKSPACES = [
 ]
 
 CANDIDATE_FILE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}\.md$")
-AUDIT_SNAPSHOT_RE = re.compile(r"^audit-\d{4}-\d{2}-\d{2}\.json$")
+SNAPSHOT_FILE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}\.json$")
+LEGACY_AUDIT_SNAPSHOT_RE = re.compile(r"^audit-\d{4}-\d{2}-\d{2}\.json$")
 WATCH_TABLE_ROW_RE = re.compile(r"^\|\s*(?!signature|---)([^|]+)\|\s*(\d+)\s*\|")
 
 
@@ -135,10 +136,17 @@ def scan_candidate_reports(ws_name: str, state_dir: Path, keep: int, report: Rep
 
 
 def scan_audit_snapshots(ws_name: str, state_dir: Path, keep: int, report: Report) -> None:
-    snaps = sorted(
-        [p for p in state_dir.iterdir() if p.is_file() and AUDIT_SNAPSHOT_RE.match(p.name)],
-        reverse=True,
-    )
+    snapshots_dir = state_dir / "snapshots"
+    if snapshots_dir.is_dir():
+        snaps = sorted(
+            [p for p in snapshots_dir.iterdir() if p.is_file() and SNAPSHOT_FILE_RE.match(p.name)],
+            reverse=True,
+        )
+    else:
+        snaps = sorted(
+            [p for p in state_dir.iterdir() if p.is_file() and LEGACY_AUDIT_SNAPSHOT_RE.match(p.name)],
+            reverse=True,
+        )
     if len(snaps) <= keep:
         return
     for old in snaps[keep:]:
